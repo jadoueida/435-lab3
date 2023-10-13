@@ -21,12 +21,14 @@ def test_add():
 def test_get_one():
     response = app.test_client().get('/api/users/6')
     data = json.loads(response.get_data(as_text=True))
+    assert response.status_code==200
     assert "Jadoueida" in str(response.data)    
 
 
 def test_delete_one():
     response = app.test_client().delete('/api/users/delete/10')
     data = json.loads(response.get_data(as_text=True))
+    assert response.status_code == 200
     assert data["status"] == "User deleted successfully"     
 
 
